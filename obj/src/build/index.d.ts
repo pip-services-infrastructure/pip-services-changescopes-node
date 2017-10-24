@@ -1,0 +1,1 @@
+export { ChangeScopesServiceFactory } from './ChangeScopesServiceFactory';
