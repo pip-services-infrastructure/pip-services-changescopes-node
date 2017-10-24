@@ -1,8 +1,12 @@
-# ChangeScopes Microservice
+# Change Scopes Microservice
 
-This is a settings microservice from Pip.Services library. 
-It manages system settings separated by individual sections.
-Each section contains multiple key-value parameter pairs. 
+This is a change scope microservice from Pip.Services library. 
+It detects changes made in a particular scope or element of a scope.
+
+This microservice is intended to implement change detection using
+simple pull mechanism. For instance: multiple configuration microservices
+change the scope, and business logic that depends on those configurations
+periodically reads it to check if anything was changed.
 
 The microservice currently supports the following deployment options:
 * Deployment platforms: Standalone Process, Seneca
@@ -31,23 +35,22 @@ please, refer to documentation of the specific protocol.
 ```typescript
 class ChangeScopeV1 implements IStringIdentifiable {
     public id: string;
-    public parameters: ConfigParams;
-    public update_time: Date;
+    public change_time: Date;
+    public elements: { [element: string]: Date };
 }
 
 interface IChangeScopesV1 {
-    getSections(correlationId: string, filter: FilterParams, paging: PagingParams, 
-        callback: (err: any, page: DataPage<ChangeScopeV1>) => void): void;
-    
-    getSectionById(correlationId: string, id: string, 
-        callback: (err: any, parameters: ConfigParams) => void): void;
+    getScopeById(correlationId: string, id: string, 
+        callback: (err: any, scope: ChangeScopeV1) => void): void;
 
-    setSection(correlationId: string, id: string, parameters: ConfigParams,
-        callback?: (err: any, parameters: ConfigParams) => void): void;
+    changeScope(correlationId: string, id: string,
+        callback?: (err: any, scope: ChangeScopeV1) => void): void;
 
-    modifySection(correlationId: string, id: string, updateParams: ConfigParams, 
-        incrementParams: ConfigParams,
-        callback?: (err: any, parameters: ConfigParams) => void): void;
+    changeScopeElement(correlationId: string, id: string, element: string,
+        callback?: (err: any, scope: ChangeScopeV1) => void): void;
+
+    deleteScopeById(correlationId: string, id: string, 
+        callback?: (err: any, scope: ChangeScopeV1) => void): void;
 }
 ```
 
@@ -148,30 +151,24 @@ client.open(null, function(err) {
 
 Now the client is ready to perform operations
 ```javascript
-var parameters = {
-    myapp: {
-        theme: 'blue',
-        language: 'en'
-    }
-};
 
-// Sets section parameters
-client.setSection(
+// Changes scope
+client.changeScope(
     null,
     '123',
     parameters,
-    function (err, parameters) {
+    function (err, scope) {
         ...
     }
 );
 ```
 
 ```javascript
-// Get section parameters
-client.getSectionById(
+// Get change scopes
+client.getScopeById(
     null,
     '123',
-    function(err, parameters) {
+    function(err, scope) {
     ...    
     }
 );
