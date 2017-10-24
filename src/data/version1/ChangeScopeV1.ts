@@ -10,5 +10,5 @@ export class ChangeScopeV1 implements IStringIdentifiable {
 
     public id: string;
     public change_time: Date;
-    public elements: any;
+    public elements: { [element: string]: Date } ;
 }

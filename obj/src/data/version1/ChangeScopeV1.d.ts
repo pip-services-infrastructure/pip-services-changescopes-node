@@ -3,5 +3,7 @@ export declare class ChangeScopeV1 implements IStringIdentifiable {
     constructor(id: string);
     id: string;
     change_time: Date;
-    elements: any;
+    elements: {
+        [element: string]: Date;
+    };
 }
