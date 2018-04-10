@@ -3,7 +3,7 @@ let _ = require('lodash');
 import { ConfigParams } from 'pip-services-commons-node';
 import { StringConverter } from 'pip-services-commons-node';
 
-import { IdentifiableMongoDbPersistence } from 'pip-services-data-node';
+import { IdentifiableMongoDbPersistence } from 'pip-services-oss-node';
 
 import { ChangeScopeV1 } from '../data/version1/ChangeScopeV1';
 import { IChangeScopesPersistence } from './IChangeScopesPersistence';
