@@ -4,3 +4,4 @@
 /data/change_scopes.test.json
 /data/change_scopes.json
 /obj/test
+/docker/id_rsa*
