@@ -1,4 +1,4 @@
-import { IdentifiableMongoDbPersistence } from 'pip-services-data-node';
+import { IdentifiableMongoDbPersistence } from 'pip-services-oss-node';
 import { ChangeScopeV1 } from '../data/version1/ChangeScopeV1';
 import { IChangeScopesPersistence } from './IChangeScopesPersistence';
 export declare class ChangeScopesMongoDbPersistence extends IdentifiableMongoDbPersistence<ChangeScopeV1, string> implements IChangeScopesPersistence {

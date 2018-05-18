@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 let _ = require('lodash');
-const pip_services_data_node_1 = require("pip-services-data-node");
+const pip_services_oss_node_1 = require("pip-services-oss-node");
 const ChangeScopesMongoDbSchema_1 = require("./ChangeScopesMongoDbSchema");
-class ChangeScopesMongoDbPersistence extends pip_services_data_node_1.IdentifiableMongoDbPersistence {
+class ChangeScopesMongoDbPersistence extends pip_services_oss_node_1.IdentifiableMongoDbPersistence {
     constructor() {
         super('change_scopes', ChangeScopesMongoDbSchema_1.ChangeScopesMongoDbSchema());
     }
