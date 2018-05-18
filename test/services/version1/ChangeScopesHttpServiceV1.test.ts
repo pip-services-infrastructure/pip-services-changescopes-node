@@ -54,7 +54,7 @@ suite('ChangeScopesHttpServiceV1', ()=> {
     test('Get and Change', (done) => {
         async.series([
             (callback) => {
-                rest.post('/change_scopes/change_scope',
+                rest.post('/v1/change_scopes/change_scope',
                     {
                         id: '123'
                     },
@@ -70,7 +70,7 @@ suite('ChangeScopesHttpServiceV1', ()=> {
                 );
             },
             (callback) => {
-                rest.post('/change_scopes/change_scope_element',
+                rest.post('/v1/change_scopes/change_scope_element',
                     {
                         id: '123',
                         element: 'key1'
@@ -87,7 +87,7 @@ suite('ChangeScopesHttpServiceV1', ()=> {
                 );
             },
             (callback) => {
-                rest.post('/change_scopes/change_scope_element',
+                rest.post('/v1/change_scopes/change_scope_element',
                     {
                         id: '123',
                         element: 'key2'
@@ -104,7 +104,7 @@ suite('ChangeScopesHttpServiceV1', ()=> {
                 );
             },
             (callback) => {
-                rest.post('/change_scopes/delete_scope_by_id',
+                rest.post('/v1/change_scopes/delete_scope_by_id',
                     {
                         id: '123'
                     },
@@ -119,7 +119,7 @@ suite('ChangeScopesHttpServiceV1', ()=> {
                 );
             },
             (callback) => {
-                rest.post('/change_scopes/get_scope_by_id',
+                rest.post('/v1/change_scopes/get_scope_by_id',
                     {
                         id: '123'
                     },
