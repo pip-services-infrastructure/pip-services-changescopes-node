@@ -8,5 +8,5 @@ __export(require("./persistence"));
 __export(require("./logic"));
 __export(require("./services/version1"));
 __export(require("./build"));
-//module.exports = require('./container/ChangeScopesSenecaPlugin'); 
+//module.exports = require('./container/ChangeScopesSenecaPlugin');
 //# sourceMappingURL=index.js.map
